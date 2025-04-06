@@ -1,0 +1,17 @@
+FROM golang:1.24.1
+
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY . .
+
+RUN go mod download
+
+COPY . .
+
+RUN go build -o main .
+
+EXPOSE 1323
+
+CMD ["./main"]
+## ENTRYPOINT  ["./app"]
